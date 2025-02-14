@@ -1,0 +1,6 @@
+package com.codinghub.Repository;
+import org.springframework.data.repository.CrudRepository;
+import com.codinghub.Model.Institutes;
+public interface Institues_Dao extends CrudRepository<Institutes,Long>
+{
+}

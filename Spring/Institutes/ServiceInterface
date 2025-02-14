@@ -1,0 +1,16 @@
+package com.codinghub.Service;
+import java.util.List;
+import com.codinghub.Model.Institutes;
+public interface Institutes_Service_Interface {
+
+	Institutes save(Institutes institutes);
+
+	List<Institutes> get();
+
+	Institutes findBy(long id);
+
+	Institutes update(long id, Institutes institutes);
+
+	String deleteInstitutes(long id);
+
+}

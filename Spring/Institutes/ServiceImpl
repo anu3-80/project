@@ -1,0 +1,44 @@
+package com.codinghub.Service;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.codinghub.Model.Institutes;
+import com.codinghub.Repository.Institues_Dao;
+@Service
+public class Institutes_ServiceImpl implements Institutes_Service_Interface
+{
+	@Autowired
+	private Institues_Dao dao;
+	@Override
+	public Institutes save(Institutes institutes) 
+	{
+		return dao.save(institutes);
+	}
+	@Override
+	public List<Institutes> get() {
+		
+		return (List<Institutes>) dao.findAll();
+	}
+	@Override
+	public Institutes findBy(long id) {
+		
+		return dao.findById(id).get();
+	}
+	@Override
+	public Institutes update(long id, Institutes institutes) 
+	{
+		Institutes old_ins=findBy(id);
+		old_ins.setName(institutes.getName());
+		old_ins.setCourse(institutes.getCourse());
+		old_ins.setFee(institutes.getFee());
+		old_ins.setDuration(institutes.getDuration());
+		return dao.save(old_ins);
+	}
+	@Override
+	public String deleteInstitutes(long id) {
+		dao.deleteById(id);
+		return "Deleted successfully";
+	}
+
+}
